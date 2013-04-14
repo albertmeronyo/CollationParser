@@ -46,14 +46,14 @@ WHERE {
 """)
 
 sparql.setReturnFormat(JSON)
-results = sparql.query().convert()
+#results = sparql.query().convert()
 
-# results = ["A-G`SUP`12`LO` H`SUP`6`LO` (lacks H6, blank?)", "`SUP`8`LO` (*1+Û1) A-2C`SUP`8`LO` 2D`SUP`4`LO`", "`SUP`8`LO` A-L`SUP`8`LO` M`SUP`6`LO`"]
+results = ["A-G`SUP`12`LO` H`SUP`6`LO` (lacks H6, blank?)", "`SUP`8`LO` (*1+Û1) A-2C`SUP`8`LO` 2D`SUP`4`LO`", "`SUP`8`LO` A-L`SUP`8`LO` M`SUP`6`LO`"]
 
-for r in results["results"]["bindings"]:
-#for r in results:
-    f = r["f"]["value"]
-    #f = r
+#for r in results["results"]["bindings"]:
+for r in results:
+    #f = r["f"]["value"]
+    f = r
     print f
     prog = re.compile('''
                       (\`SUP\`(?P<pren>[0-9]+)\`LO\`\s*(?P<pre>(\(.*\)\s*))?)?   # Pre-part
@@ -84,6 +84,7 @@ for r in results["results"]["bindings"]:
     #print pren, " + ((", end_sheet_n, "- 1 ) * ", len(g)," + ", g[end_sheet], " - ", g[start_sheet], " + 1) *", sheet_count, " + ", remain_n
     print sheets
     print pages
+    print
     
     
         
