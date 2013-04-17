@@ -54,7 +54,7 @@ results = ["A-G`SUP`12`LO` H`SUP`6`LO` (lacks H6, blank?)", "`SUP`8`LO` (*1+Û1)
 for r in results:
     #f = r["f"]["value"]
     f = r
-    print f
+    print "Formula:", f
     prog = re.compile('''
                       (\`SUP\`(?P<pren>[0-9]+)\`LO\`\s*(?P<pre>(\(.*\)\s*))?)?   # Pre-part
                       (?P<start_sheet>[A-Z])(-(?P<end_sheet_n>[0-9]*)(?P<end_sheet>[A-Z]))?\`SUP\`(?P<sheet_count>[0-9]+)\`LO\`\s*((?P<remain>[0-9]*[A-Z])(\`SUP\`)?(?P<remain_n>[0-9]+)(\`LO\`)?)?.*'''
@@ -82,8 +82,8 @@ for r in results:
     sheets = pren + ((end_sheet_n - 1) * len(g) + g[end_sheet] - g[start_sheet] + 1) * sheet_count + remain_n
     pages = sheets * 2
     #print pren, " + ((", end_sheet_n, "- 1 ) * ", len(g)," + ", g[end_sheet], " - ", g[start_sheet], " + 1) *", sheet_count, " + ", remain_n
-    print sheets
-    print pages
+    print "Sheets:", sheets
+    print "Pages:", pages
     print
     
     
